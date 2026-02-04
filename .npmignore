@@ -1,0 +1,31 @@
+# Source files (only ship compiled JS)
+src/
+tsconfig.json
+
+# Examples and docs (keep README)
+examples/
+CONTRIBUTING.md
+QUICKSTART.md
+
+# Git files
+.git/
+.gitignore
+
+# Development files
+*.log
+npm-debug.log*
+
+# Test results
+results/
+*.json
+!package.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
