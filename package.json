@@ -1,0 +1,43 @@
+{
+  "name": "apibench",
+  "version": "1.0.0",
+  "description": "A performance benchmarking tool for REST APIs with detailed metrics and comparison features",
+  "main": "dist/cli.js",
+  "bin": {
+    "apibench": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "prepublishOnly": "npm run build",
+    "test": "node dist/cli.js --help"
+  },
+  "keywords": [
+    "api",
+    "benchmark",
+    "performance",
+    "testing",
+    "load-testing",
+    "http",
+    "rest",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "axios": "^1.6.2",
+    "autocannon": "^7.14.0",
+    "cli-table3": "^0.6.3",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
