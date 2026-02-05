@@ -23,7 +23,7 @@
     "rest",
     "cli"
   ],
-  "author": "",
+  "author": "ranjan98",
   "license": "MIT",
   "dependencies": {
     "commander": "^11.1.0",
