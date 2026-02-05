@@ -1,4 +1,4 @@
-import autocannon from 'autocannon';
+import autocannon, { Result } from 'autocannon';
 import ora from 'ora';
 
 export interface BenchmarkOptions {
@@ -59,7 +59,7 @@ export interface BenchmarkResults {
 export async function runBenchmark(options: BenchmarkOptions): Promise<BenchmarkResults> {
   const spinner = ora('Running benchmark...').start();
 
-  const autocannonOptions: autocannon.Options = {
+  const autocannonOptions: any = {
     url: options.url,
     method: options.method,
     duration: options.duration,
@@ -81,7 +81,7 @@ export async function runBenchmark(options: BenchmarkOptions): Promise<Benchmark
   }
 
   return new Promise((resolve, reject) => {
-    const instance = autocannon(autocannonOptions, (err, result) => {
+    const instance = autocannon(autocannonOptions, (err: Error | null, result: Result) => {
       spinner.stop();
 
       if (err) {
@@ -105,9 +105,9 @@ export async function runBenchmark(options: BenchmarkOptions): Promise<Benchmark
           p50: result.requests.p50,
           p75: result.requests.p75,
           p90: result.requests.p90,
-          p95: result.requests.p95,
+          p95: result.requests.p97_5,
           p99: result.requests.p99,
-          p999: result.requests.p999,
+          p999: result.requests.p99_9,
         },
         latency: {
           mean: result.latency.mean,
@@ -117,9 +117,9 @@ export async function runBenchmark(options: BenchmarkOptions): Promise<Benchmark
           p50: result.latency.p50,
           p75: result.latency.p75,
           p90: result.latency.p90,
-          p95: result.latency.p95,
+          p95: result.latency.p97_5,
           p99: result.latency.p99,
-          p999: result.latency.p999,
+          p999: result.latency.p99_9,
         },
         throughput: {
           mean: result.throughput.mean,
