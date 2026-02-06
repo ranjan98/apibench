@@ -28,7 +28,7 @@ export interface BenchmarkResults {
     p50: number;
     p75: number;
     p90: number;
-    p95: number;
+    p97_5: number;
     p99: number;
     p999: number;
   };
@@ -40,7 +40,7 @@ export interface BenchmarkResults {
     p50: number;
     p75: number;
     p90: number;
-    p95: number;
+    p97_5: number;
     p99: number;
     p999: number;
   };
@@ -105,7 +105,7 @@ export async function runBenchmark(options: BenchmarkOptions): Promise<Benchmark
           p50: result.requests.p50,
           p75: result.requests.p75,
           p90: result.requests.p90,
-          p95: result.requests.p97_5,
+          p97_5: result.requests.p97_5,
           p99: result.requests.p99,
           p999: result.requests.p99_9,
         },
@@ -117,7 +117,7 @@ export async function runBenchmark(options: BenchmarkOptions): Promise<Benchmark
           p50: result.latency.p50,
           p75: result.latency.p75,
           p90: result.latency.p90,
-          p95: result.latency.p97_5,
+          p97_5: result.latency.p97_5,
           p99: result.latency.p99,
           p999: result.latency.p99_9,
         },

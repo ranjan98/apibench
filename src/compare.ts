@@ -51,10 +51,10 @@ export function compareResults(before: BenchmarkResults, after: BenchmarkResults
       formatChange(before.latency.p50, after.latency.p50, true),
     ],
     [
-      'P95',
-      before.latency.p95.toFixed(2),
-      after.latency.p95.toFixed(2),
-      formatChange(before.latency.p95, after.latency.p95, true),
+      'P97.5',
+      before.latency.p97_5.toFixed(2),
+      after.latency.p97_5.toFixed(2),
+      formatChange(before.latency.p97_5, after.latency.p97_5, true),
     ],
     [
       'P99',
@@ -143,12 +143,12 @@ function printComparison(before: BenchmarkResults, after: BenchmarkResults): voi
     regressions.push(`Throughput decreased by ${Math.abs(reqChange).toFixed(1)}%`);
   }
 
-  // P95 latency
-  const p95Change = ((after.latency.p95 - before.latency.p95) / before.latency.p95) * 100;
-  if (p95Change < -5) {
-    improvements.push(`P95 latency improved by ${Math.abs(p95Change).toFixed(1)}%`);
-  } else if (p95Change > 5) {
-    regressions.push(`P95 latency increased by ${p95Change.toFixed(1)}%`);
+  // P97.5 latency
+  const p97_5Change = ((after.latency.p97_5 - before.latency.p97_5) / before.latency.p97_5) * 100;
+  if (p97_5Change < -5) {
+    improvements.push(`P97.5 latency improved by ${Math.abs(p97_5Change).toFixed(1)}%`);
+  } else if (p97_5Change > 5) {
+    regressions.push(`P97.5 latency increased by ${p97_5Change.toFixed(1)}%`);
   }
 
   // P99 latency

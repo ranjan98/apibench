@@ -31,7 +31,7 @@ export function generateReport(results: BenchmarkResults): void {
     ['P50 (Median)', formatLatency(results.latency.p50)],
     ['P75', formatLatency(results.latency.p75)],
     ['P90', formatLatency(results.latency.p90)],
-    ['P95', formatLatency(results.latency.p95)],
+    ['P97.5', formatLatency(results.latency.p97_5)],
     ['P99', formatLatency(results.latency.p99)],
     ['P99.9', formatLatency(results.latency.p999)],
     ['Min/Max', `${results.latency.min} / ${results.latency.max}`],
@@ -118,12 +118,12 @@ function printAssessment(results: BenchmarkResults): void {
   const assessments: string[] = [];
 
   // Latency assessment
-  if (results.latency.p95 < 100) {
-    assessments.push(chalk.green('✓ Excellent latency (P95 < 100ms)'));
-  } else if (results.latency.p95 < 300) {
-    assessments.push(chalk.yellow('◆ Acceptable latency (P95 < 300ms)'));
+  if (results.latency.p97_5 < 100) {
+    assessments.push(chalk.green('✓ Excellent latency (P97.5 < 100ms)'));
+  } else if (results.latency.p97_5 < 300) {
+    assessments.push(chalk.yellow('◆ Acceptable latency (P97.5 < 300ms)'));
   } else {
-    assessments.push(chalk.red('✗ High latency (P95 > 300ms) - optimization recommended'));
+    assessments.push(chalk.red('✗ High latency (P97.5 > 300ms) - optimization recommended'));
   }
 
   // Throughput assessment
